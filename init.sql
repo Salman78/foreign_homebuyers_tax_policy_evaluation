@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS listings (
+    id SERIAL PRIMARY KEY,
+    price NUMERIC NOT NULL,
+    location TEXT NOT NULL
+);

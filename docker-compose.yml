@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python_app
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=zillow_toronto_db
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_HOST=db
+      - DB_PORT=5432
+
+  db:
+    image: postgres:latest
+    container_name: housing_policy_postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: zillow_toronto_db
+    ports:
+      - "5432:5432"
